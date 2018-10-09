@@ -27,12 +27,13 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  $mainWidth: 800px;
   .keyvisual {
-    margin-bottom: 10px;
+    margin-bottom: 70px;
     &__houseSubCard {
       position: absolute;
       bottom: -50px;
-      left: 20%;
+      left: calc((100% - #{$mainWidth}) / 2);
     }
   }
   .main {
