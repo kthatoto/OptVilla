@@ -4,6 +4,9 @@
   h2 {{ house.title }}
   p.price 一泊あたり
     span ¥{{ house.pricePerStay }}
+  p.rate
+    icon.icon(v-for="i in 5" name="star" :key="i" :class="{valid: i < 5}")
+    span {{ house.rate }}
 </template>
 
 <script>
@@ -31,8 +34,24 @@ export default {
   }
   .price {
     font-size: 0.8rem;
+    margin-bottom: 10px;
     span {
       font-weight: bold;
+    }
+  }
+  .rate {
+    .icon {
+      $iconSize: 15px;
+      width: $iconSize;
+      height: $iconSize;
+      vertical-align: text-bottom;
+      &.valid {
+        color: #fe7f7f;
+      }
+    }
+    span {
+      font-size: 0.8rem;
+      margin-left: 3px;
     }
   }
 }

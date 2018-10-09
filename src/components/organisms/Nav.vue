@@ -6,17 +6,18 @@
       li
         router-link(to='/') ホーム
       li
-        router-link(to='/') 検索する
+        router-link(to='/tmp') 検索する
       li
-        router-link(to='/') ホストを始める
+        router-link(to='/tmp') ホストを始める
       li
-        router-link(to='/') ログイン
+        router-link(to='/tmp') ログイン
 </template>
 
 <script>
 </script>
 
 <style lang="scss" scoped>
+$pink: #fe7f7f;
 .nav {
   $navHeight: 75px;
   width: 100%;
@@ -39,11 +40,21 @@
         $linkPadding: 25px;
         float: left;
         line-height: calc(#{$navHeight} - #{$linkPadding} * 2);
+        height: 100%;
         padding: $linkPadding 0;
         font-size: 0.7rem;
         margin: 0 10px;
+        a {
+          display: inline-block;
+          height: 100%;
+        }
       }
     }
+  }
+  .router-link-exact-active {
+    color: $pink;
+    font-weight: bold;
+    border-bottom: 1px solid $pink;
   }
 }
 </style>
