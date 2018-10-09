@@ -51,7 +51,7 @@ export default {
     incIndex () {
       this.searchButton.index++
       if (this.searchButton.index > 20) {
-        alert("おしすぎ")
+        alert('おしすぎ')
       }
     }
   }

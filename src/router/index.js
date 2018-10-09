@@ -12,8 +12,13 @@ export default new Router({
       component: Home
     },
     {
-      path: '/tmp',
-      name: 'Tmp',
+      path: '/login',
+      name: 'Login',
+      component: Home
+    },
+    {
+      path: '/hosting',
+      name: 'Hosting',
       component: Home
     }
   ]

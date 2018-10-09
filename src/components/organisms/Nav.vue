@@ -9,9 +9,9 @@
       li
         router-link(to='#' @click.native="showSearch") 検索する
       li
-        router-link(to='/tmp') ホストを始める
+        router-link(to='/hosting') ホストを始める
       li
-        router-link(to='/tmp') ログイン
+        router-link(to='/login') ログイン
   Search(ref="search")
 </template>
 
