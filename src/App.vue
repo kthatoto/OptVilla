@@ -29,4 +29,19 @@ body {
 a {
   color: inherit;
 }
+input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: block;
+  color: #495057;
+  background-color: #fff;
+  appearance: none;
+}
+#app {
+  padding-bottom: 100px;
+}
 </style>

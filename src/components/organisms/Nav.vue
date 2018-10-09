@@ -1,19 +1,30 @@
 <template lang="pug">
 .nav
   .nav__main
-    h1 Airbnbnb
+    h1
+      router-link(to='/') Airbnbnb
     ul
       li
         router-link(to='/') ホーム
       li
-        router-link(to='/tmp') 検索する
+        router-link(to='#' @click.native="showSearch") 検索する
       li
         router-link(to='/tmp') ホストを始める
       li
         router-link(to='/tmp') ログイン
+  Search(ref="search")
 </template>
 
 <script>
+import Search from '@/components/organisms/Search'
+export default {
+  components: { Search },
+  methods: {
+    showSearch () {
+      this.$refs.search.showModal()
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -47,14 +58,14 @@ $pink: #fe7f7f;
         a {
           display: inline-block;
           height: 100%;
+          &.router-link-exact-active {
+            color: $pink;
+            font-weight: bold;
+            border-bottom: 1px solid $pink;
+          }
         }
       }
     }
-  }
-  .router-link-exact-active {
-    color: $pink;
-    font-weight: bold;
-    border-bottom: 1px solid $pink;
   }
 }
 </style>

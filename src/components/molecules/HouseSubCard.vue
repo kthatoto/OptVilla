@@ -17,10 +17,10 @@ export default {
 
 <style lang="scss" scoped>
 .houseSubCard {
-  width: 400px;
-  height: 200px;
+  // width: 400px;
+  // height: 200px;
   background-color: white;
-  border-radius: 10px;
+  // border-radius: 10px;
   padding: 25px;
   h2 {
     font-size: 1.1rem;

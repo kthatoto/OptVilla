@@ -2,8 +2,8 @@
 .home
   Keyvisual.keyvisual
     house-sub-card.keyvisual__houseSubCard(:house="topHouse")
-  div.main
-    Recommends
+  .main
+    Recommends(:recommends="recommends")
 </template>
 
 <script>
@@ -15,11 +15,63 @@ export default {
   data () {
     return {
       topHouse: {
+        id: 1,
         title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
         option: '屋根裏部屋 ベッド1台 福島県',
         pricePerStay: 3000,
         rate: '4.0'
-      }
+      },
+      recommends: [
+        {
+          id: 1,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        },
+        {
+          id: 2,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        },
+        {
+          id: 3,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        },
+        {
+          id: 4,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        },
+        {
+          id: 5,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        },
+        {
+          id: 6,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        },
+        {
+          id: 7,
+          title: '会津 伝統的な城下町の清潔な部屋。観光の拠点に最適！',
+          option: '屋根裏部屋 ベッド1台 福島県',
+          pricePerStay: 3000,
+          rate: '4.0'
+        }
+      ]
     }
   }
 }
@@ -29,11 +81,12 @@ export default {
 .home {
   $mainWidth: 800px;
   .keyvisual {
-    margin-bottom: 70px;
+    margin-bottom: 100px;
     &__houseSubCard {
       position: absolute;
       bottom: -50px;
       left: calc((100% - #{$mainWidth}) / 2);
+      border-radius: 10px;
     }
   }
   .main {
