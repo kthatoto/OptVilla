@@ -20,7 +20,7 @@
       .price
         label 値段
         Select(:options="priceOptions")
-      .button(@click="searchButton.index++") {{ searchButton.word.slice(0, searchButton.index) }}
+      .button(@click="incIndex") {{ searchButton.word.slice(0, searchButton.index) }}
 </template>
 
 <script>
@@ -36,7 +36,7 @@ export default {
         'まあおてごろに ¥1,000~¥3,000',
         'なんだかかんだ ¥3,000~¥5,000',
         'そうはいっても ¥5,000~¥10,000',
-        'もはやいさぎよく ¥10,000~',
+        'もはやいさぎよく ¥10,000~'
       ],
       searchButton: {
         word: '検索しても何も起きないよ...',
@@ -47,6 +47,12 @@ export default {
   methods: {
     showModal () {
       this.$refs.modal.showing = true
+    },
+    incIndex () {
+      this.searchButton.index++
+      if (this.searchButton.index > 20) {
+        alert("おしすぎ")
+      }
     }
   }
 }

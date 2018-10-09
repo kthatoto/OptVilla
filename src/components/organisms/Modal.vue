@@ -1,8 +1,8 @@
 <template lang="pug">
 .modal(v-if="showing")
-  .modal__background(@click="showing = false")
+  .modal__background(@click="hideModal")
   .modal__content(:style="{ height, width }")
-    icon.modal__close(name="times" @click.native="showing = false")
+    icon.modal__close(name="times" @click.native="hideModal")
     slot
 </template>
 
@@ -12,6 +12,13 @@ export default {
   data () {
     return {
       showing: false
+    }
+  },
+  methods: {
+    hideModal () {
+      const href = window.location.href
+      window.location.href = href.slice(0, href.length - 1)
+      this.showing = false
     }
   }
 }
