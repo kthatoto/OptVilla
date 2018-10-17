@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$pink: #eb6a7a;
+@import '@/styles/resources';
 .nav {
   $navHeight: 90px;
   width: 100%;

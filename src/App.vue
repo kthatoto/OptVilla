@@ -13,6 +13,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/styles/resources';
 html {
   font-size: 16px;
 }
@@ -22,7 +23,7 @@ html {
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  color: #242424;
+  color: $black;
 }
 body {
   background-color: #efefef;
