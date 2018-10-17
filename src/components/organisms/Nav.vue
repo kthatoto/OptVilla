@@ -2,12 +2,12 @@
 .nav
   .nav__main
     h1
-      router-link(to='/') Airbnbnb
+      router-link.nav__logo(to='/') Airbnbnb
     ul
       li
         router-link(to='/') ホーム
       li
-        router-link(to='#' @click.native="showSearch") 検索する
+        router-link(to='#' @click.native="showSearch") 検索
       li
         router-link(to='/hosting') ホストを始める
       li
@@ -28,14 +28,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$pink: #fe7f7f;
+$pink: #eb6a7a;
 .nav {
-  $navHeight: 75px;
+  $navHeight: 90px;
   width: 100%;
   height: $navHeight;
   background-color: white;
+  &__logo {
+    background-color: #2eabab;
+    color: white;
+    display: inline-block;
+    height: 100%;
+    width: 200px;
+    text-align: center;
+  }
   &__main {
-    width: 800px;
+    width: 900px;
     height: 100%;
     margin: 0 auto;
     h1 {
@@ -54,7 +62,7 @@ $pink: #fe7f7f;
         height: 100%;
         padding: $linkPadding 0;
         font-size: 0.7rem;
-        margin: 0 10px;
+        margin: 0 25px;
         a {
           display: inline-block;
           height: 100%;

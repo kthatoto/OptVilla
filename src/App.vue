@@ -22,6 +22,7 @@ html {
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  color: #242424;
 }
 body {
   background-color: #efefef;
