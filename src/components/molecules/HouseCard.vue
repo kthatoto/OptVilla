@@ -1,6 +1,6 @@
 <template lang="pug">
 .houseCard
-  .houseCard__thumbnail
+  .houseCard__thumbnail(:style="{height: house.height + 'px'}")
   house-sub-card.houseCard__subCard(:house="house")
 </template>
 
@@ -14,18 +14,14 @@ export default {
 
 <style lang="scss" scoped>
 .houseCard {
-  position: relative;
-  border-radius: 10px;
-  height: 400px;
-  background-color: white;
-  overflow: hidden;
   &__thumbnail {
+    border-radius: 10px;
     background-color: gray;
-    height: 200px;
   }
   &__subCard {
-    position: absolute;
-    top: 180px;
+    width: calc(100% - 30px);
+    margin-top: -50px;
+    border-radius: 0 10px 10px 10px;
   }
 }
 </style>

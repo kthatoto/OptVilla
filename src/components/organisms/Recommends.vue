@@ -1,6 +1,8 @@
 <template lang="pug">
 .recommends
-  h3 あなたへのおすすめ
+  h2
+    span.prebox
+    | 人気民泊リゾート
   .recommends__houseCards
     house-card.recommends__houseCard(v-for="house in recommends" :house="house" :key="house.id")
 </template>
@@ -14,10 +16,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/resources';
 .recommends {
-  h3 {
-    margin-bottom: 10px;
-    font-size: 1rem;
+  h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
   }
   &__houseCards {
     display: flex;
@@ -25,8 +28,8 @@ export default {
     flex-wrap: wrap;
   }
   &__houseCard {
-    width: 31%;
-    margin-bottom: 30px;
+    width: 360px;
+    margin-bottom: 60px;
   }
 }
 </style>

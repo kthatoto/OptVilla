@@ -1,0 +1,86 @@
+<template lang="pug">
+.customs
+  h2
+    span.prebox
+    | カスタマイズから選ぶ
+  .customs__list
+    img.customs__cursor.-left(:src="require('../../assets/ButtonLeft.png')"
+      v-scroll-to="customOptions.left")
+    img.customs__cursor.-right(:src="require('../../assets/ButtonRight.png')"
+      v-scroll-to="customOptions.right")
+    .customs__scroll
+      CustomCard.customs__item(v-for="custom in customs" :key="custom.id" :custom="custom")
+</template>
+
+<script>
+import CustomCard from '@/components/molecules/CustomCard'
+export default {
+  props: ['customs'],
+  components: { CustomCard },
+  data () {
+    return {
+      customOptions: {
+        left: {
+          el: '.customs__scroll .customs__item:first-child',
+          container: '.customs__scroll',
+          duration: 500,
+          offset: 0,
+          x: true,
+          y: false
+        },
+        right: {
+          el: '.customs__scroll .customs__item:last-child',
+          container: '.customs__scroll',
+          duration: 500,
+          offset: -720,
+          x: true,
+          y: false
+        }
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '@/styles/resources';
+.customs {
+  h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+  &__list {
+    position: relative;
+    width: 100%;
+  }
+  &__scroll {
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+  &__item {
+    display: inline-block;
+    width: 360px;
+    margin-right: 30px;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  &__cursor {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    filter: drop-shadow(0 0 6px $black);
+    cursor: pointer;
+    &.-left {
+      left: -25px;
+      top: calc(50% - 25px);
+    }
+    &.-right {
+      right: -25px;
+      top: calc(50% - 25px);
+    }
+  }
+}
+</style>

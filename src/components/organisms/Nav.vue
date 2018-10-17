@@ -43,7 +43,7 @@ export default {
     text-align: center;
   }
   &__main {
-    width: 900px;
+    width: $globalWidth;
     height: 100%;
     margin: 0 auto;
     h1 {
@@ -61,11 +61,14 @@ export default {
         line-height: calc(#{$navHeight} - #{$linkPadding} * 2);
         height: 100%;
         padding: $linkPadding 0;
-        font-size: 0.7rem;
-        margin: 0 25px;
+        font-size: 12px;
+        margin-left: 50px;
         a {
           display: inline-block;
           height: 100%;
+          &:hover {
+            color: $hoverBlack;
+          }
           &.router-link-exact-active {
             color: $pink;
             font-weight: bold;

@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+import VueScrollTo from 'vue-scrollto'
 
+Vue.use(VueScrollTo)
 Vue.component('icon', Icon)
 
 Vue.config.productionTip = false

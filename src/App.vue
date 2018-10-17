@@ -15,7 +15,7 @@ export default {
 <style lang="scss">
 @import '@/styles/resources';
 html {
-  font-size: 16px;
+  font-family: '游ゴシック体', 'Yu Gothic', YuGothic, sans-serif;
 }
 * {
   margin: 0;
@@ -26,7 +26,7 @@ html {
   color: $black;
 }
 body {
-  background-color: #efefef;
+  background-color: #f4f4f4;
 }
 a {
   color: inherit;

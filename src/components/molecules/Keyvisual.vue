@@ -6,7 +6,7 @@
 <style lang="scss" scoped>
 .keyvisual {
   width: 100%;
-  height: 500px;
+  height: 400px;
   background-color: #888;
   position: relative;
 }
