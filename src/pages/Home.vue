@@ -1,7 +1,8 @@
 <template lang="pug">
 .home
-  Keyvisual.keyvisual
-    house-sub-card.keyvisual__houseSubCard(:house="topHouse")
+  router-link(:to="{ name: 'House', params: { id: topHouse.id } }")
+    Keyvisual.keyvisual
+      house-sub-card.keyvisual__houseSubCard(:house="topHouse")
   .main
     Houses.houses(:houses="recommends" title="人気民泊リゾート")
     Customs.customs(:customs="customs")
