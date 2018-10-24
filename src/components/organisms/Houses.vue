@@ -3,7 +3,7 @@
   h2(v-if="title")
     span.prebox
     | {{ title }}
-    span.showToggle(@click="toggle")
+    router-link.showToggle(@click="toggle" to="/search")
       | {{ '全て表示' }}
       icon.icon.-right(name="chevron-down")
   .houses__houseCards

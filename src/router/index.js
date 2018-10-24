@@ -7,6 +7,9 @@ import House from '@/pages/House'
 Vue.use(Router)
 
 export default new Router({
+  scrollBehavior (to, from, savedPosition) {
+    return {x: 0, y: 0}
+  },
   routes: [
     {
       path: '/',
