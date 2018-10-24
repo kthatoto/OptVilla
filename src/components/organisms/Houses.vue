@@ -1,6 +1,6 @@
 <template lang="pug">
 .houses
-  h2
+  h2(v-if="title")
     span.prebox
     | {{ title }}
     span.showToggle(@click="toggle")
