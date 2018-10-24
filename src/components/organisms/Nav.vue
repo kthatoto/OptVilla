@@ -2,7 +2,7 @@
 .nav
   .nav__main
     h1
-      router-link.nav__logo(to='/') Airbnbnb
+      router-link.nav__logo(to='/') Opt Villa
     ul
       li
         router-link(to='/') ホーム
@@ -35,8 +35,7 @@ export default {
   height: $navHeight;
   background-color: white;
   &__logo {
-    background-color: #2eabab;
-    color: white;
+    color: #2eabab;
     display: inline-block;
     height: 100%;
     width: 200px;
