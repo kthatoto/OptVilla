@@ -1,12 +1,15 @@
 <template lang="pug">
 .houseSubCard
+  p.location
+    icon.icon.-left(name="map-marker-alt")
+    | {{ house.prefecture }}, {{ house.city }}
   h2 {{ house.title }}
-  p.pink カスタマイズ
-  p.options
-    span(v-for="option in house.options" :key="option") {{ option }},
-  p.price １泊
-    span(v-if="house.maxStayerNumber")  (最大{{ house.maxStayerNumber }}人)
-    span  / ¥{{ house.pricePerStay }}
+  p.price
+    span.first １泊
+    span.second(v-if="house.maxStayerNumber")  (最大{{ house.maxStayerNumber }}人)
+    span.third /
+    span.fourth ¥{{ house.pricePerStay }}~
+  p.rate
 </template>
 
 <script>
@@ -24,19 +27,25 @@ export default {
     font-size: 20px;
     margin-bottom: 16px;
   }
-  .pink {
+  .location {
     color: $pink;
     font-size: 14px;
     margin-bottom: 8px;
-  }
-  .options {
-    color: $hoverBlack;
-    font-size: 14px;
-    margin-bottom: 16px;
+    .icon {
+      width: 14px;
+      height: 14px;
+      color: $pink;
+    }
   }
   .price {
     font-size: 0.8rem;
     margin-bottom: 10px;
+    .first, .second, .fourth {
+      font-weight: bold;
+    }
+    .third {
+      margin: 0 5px;
+    }
   }
 }
 </style>
