@@ -10,7 +10,7 @@
       li
         router-link(to='/search') 検索
       li
-        router-link(to='/hosting') ホストを始める
+        router-link(to='#') ホストを始める
       li.login
         img(:src="require('@/assets/profile.png')")
 </template>

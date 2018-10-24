@@ -1,5 +1,5 @@
 <template lang="pug">
-.houseCard
+router-link.houseCard(:to="{ name: 'House', params: { id: house.id } }")
   .houseCard__thumbnail(:style="{height: house.height + 'px'}")
   house-sub-card.houseCard__subCard(:house="house")
 </template>
@@ -14,6 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 .houseCard {
+  display: block;
   &__thumbnail {
     border-radius: 10px;
     background-color: gray;
