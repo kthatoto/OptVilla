@@ -23,10 +23,11 @@ html {
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  color: $black;
 }
 body {
   background-color: #f4f4f4;
+  color: $black;
+  line-height: 1.4;
 }
 a {
   color: inherit;
@@ -45,5 +46,14 @@ input {
 }
 #app {
   padding-bottom: 100px;
+}
+.icon {
+  vertical-align: text-bottom;
+  &.-left {
+    margin-right: 5px;
+  }
+  &.-right {
+    margin-left: 5px;
+  }
 }
 </style>
