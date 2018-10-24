@@ -9,12 +9,14 @@
     span.second(v-if="house.maxStayerNumber")  (最大{{ house.maxStayerNumber }}人)
     span.third /
     span.fourth ¥{{ house.pricePerStay }}~
-  p.rate
+  Rate(:rate="house.rate")
 </template>
 
 <script>
+import Rate from '@/components/molecules/Rate'
 export default {
-  props: ['house']
+  props: ['house'],
+  components: { Rate }
 }
 </script>
 
@@ -22,7 +24,7 @@ export default {
 @import '@/styles/resources';
 .houseSubCard {
   background-color: white;
-  padding: 24px;
+  padding: 24px 24px 50px;
   h2 {
     font-size: 20px;
     margin-bottom: 16px;

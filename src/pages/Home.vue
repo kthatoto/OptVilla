@@ -22,7 +22,8 @@ export default {
         maxStayerNumber: 3,
         pricePerStay: 35000,
         prefecture: '神奈川',
-        city: '箱根'
+        city: '箱根',
+        rate: 3.4
       },
       recommends: [],
       customs: [
