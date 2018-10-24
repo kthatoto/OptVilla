@@ -3,17 +3,18 @@
   Keyvisual.keyvisual
     house-sub-card.keyvisual__houseSubCard(:house="topHouse")
   .main
-    Recommends.recommends(:recommends="recommends")
+    Houses.houses(:houses="recommends" title="人気民泊リゾート")
     Customs.customs(:customs="customs")
+    Houses.houses(:houses="recommends" title="安く泊まれる民泊リゾート")
 </template>
 
 <script>
 import Keyvisual from '@/components/molecules/Keyvisual'
 import HouseSubCard from '@/components/molecules/HouseSubCard'
-import Recommends from '@/components/organisms/Recommends'
+import Houses from '@/components/organisms/Houses'
 import Customs from '@/components/organisms/Customs'
 export default {
-  components: { Keyvisual, HouseSubCard, Recommends, Customs },
+  components: { Keyvisual, HouseSubCard, Houses, Customs },
   data () {
     return {
       topHouse: {
@@ -64,6 +65,9 @@ export default {
   .main {
     width: $globalWidth;
     margin: 0 auto;
+    .customs {
+      margin-bottom: 64px;
+    }
   }
 }
 </style>

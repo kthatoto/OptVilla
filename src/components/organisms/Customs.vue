@@ -2,7 +2,7 @@
 .customs
   h2
     span.prebox
-    | カスタマイズから選ぶ
+    | フードオプションから選ぶ
   .customs__list
     img.customs__cursor.-left(:src="require('../../assets/ButtonLeft.png')"
       v-scroll-to="customOptions.left")

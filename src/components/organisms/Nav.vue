@@ -8,23 +8,15 @@
       li
         router-link(to='/') ホーム
       li
-        router-link(to='#' @click.native="showSearch") 検索
+        router-link(to='/search') 検索
       li
         router-link(to='/hosting') ホストを始める
       li.login
         img(:src="require('@/assets/profile.png')")
-  Search(ref="search")
 </template>
 
 <script>
-import Search from '@/components/organisms/Search'
 export default {
-  components: { Search },
-  methods: {
-    showSearch () {
-      this.$refs.search.showModal()
-    }
-  }
 }
 </script>
 
