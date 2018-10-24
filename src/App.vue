@@ -25,7 +25,7 @@ html {
   text-decoration: none;
 }
 body {
-  background-color: #f5f5f5;
+  background-color: $white;
   color: $black;
   line-height: 1.4;
 }

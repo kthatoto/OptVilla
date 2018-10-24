@@ -8,7 +8,7 @@
     span.first １泊
     span.second(v-if="house.maxStayerNumber")  (最大{{ house.maxStayerNumber }}人)
     span.third /
-    span.fourth ¥{{ house.pricePerStay }}~
+    span.fourth ¥{{ house.pricePerStay.toLocaleString() }}~
   Rate(:rate="house.rate")
 </template>
 
@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/resources';
 .houseSubCard {
-  background-color: white;
+  background-color: $white;
   padding: 24px 24px 50px;
   h2 {
     font-size: 20px;
@@ -40,7 +40,7 @@ export default {
     }
   }
   .price {
-    font-size: 0.8rem;
+    font-size: 14px;
     margin-bottom: 10px;
     .first, .second, .fourth {
       font-weight: bold;
