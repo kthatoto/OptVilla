@@ -40,11 +40,11 @@ export default {
     bottom: 0;
     right: 0;
     font-size: 14px;
-    color: #2dadac;
+    color: $blue;
     user-select: none;
     cursor: pointer;
     &:hover {
-      color: #259e9d;
+      color: $hoverBlue;
     }
   }
 }
