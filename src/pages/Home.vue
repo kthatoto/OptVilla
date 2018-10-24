@@ -19,9 +19,10 @@ export default {
       topHouse: {
         id: 1,
         title: '湘南の海が一望できる別荘で素敵な休日を過ごしませんか？',
-        options: ['イタリアンシェフのディナー', '貸しボート', '入浴剤', '貸切プール'],
         maxStayerNumber: 3,
-        pricePerStay: 35000
+        pricePerStay: 35000,
+        prefecture: '神奈川',
+        city: '箱根'
       },
       recommends: [],
       customs: [
