@@ -11,8 +11,8 @@
         router-link(to='#' @click.native="showSearch") 検索
       li
         router-link(to='/hosting') ホストを始める
-      li
-        router-link(to='/login') ログイン
+      li.login
+        img(:src="require('@/assets/profile.png')")
   Search(ref="search")
 </template>
 
@@ -77,6 +77,16 @@ export default {
             color: $pink;
             font-weight: bold;
             border-bottom: 1px solid $pink;
+          }
+        }
+        &.login {
+          padding: 20px 0;
+          height: $navHeight;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 3px 0;
           }
         }
       }
