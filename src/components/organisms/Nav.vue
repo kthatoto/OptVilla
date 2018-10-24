@@ -2,7 +2,8 @@
 .nav
   .nav__main
     h1
-      router-link.nav__logo(to='/') Opt Villa
+      router-link.nav__logo(to='/')
+        img(:src="require('@/assets/OptVilla_mainrogo.svg')")
     ul
       li
         router-link(to='/') ホーム
@@ -38,8 +39,12 @@ export default {
     color: #2eabab;
     display: inline-block;
     height: 100%;
-    width: 200px;
     text-align: center;
+    $logoHeight: 50px;
+    padding: calc((#{$navHeight} - #{$logoHeight}) / 2 - 3px) 0;
+    img {
+      height: 50px;
+    }
   }
   &__main {
     width: $globalWidth;
