@@ -34,7 +34,7 @@ export default {
   .keyvisual {
     margin-bottom: 100px;
   }
-  $leftColumnWidth: 700px;
+  $leftColumnWidth: 720px;
   .leftColumn {
     width: $leftColumnWidth;
   }
