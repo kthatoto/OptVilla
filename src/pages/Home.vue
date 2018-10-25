@@ -14,19 +14,12 @@ import Keyvisual from '@/components/molecules/Keyvisual'
 import HouseSubCard from '@/components/molecules/HouseSubCard'
 import Houses from '@/components/organisms/Houses'
 import Customs from '@/components/organisms/Customs'
+import sampleHouse from '@/sampleData/house'
 export default {
   components: { Keyvisual, HouseSubCard, Houses, Customs },
   data () {
     return {
-      topHouse: {
-        id: 1,
-        title: '湘南の海が一望できる別荘で素敵な休日を過ごしませんか？',
-        maxStayerNumber: 3,
-        pricePerStay: 35000,
-        prefecture: '神奈川',
-        city: '箱根',
-        rate: 3.4
-      },
+      topHouse: {},
       recommends: [],
       customs: [
         { id: 1, name: 'レンタルシップ', slug: 'cruiging' },
@@ -37,6 +30,7 @@ export default {
     }
   },
   created () {
+    this.topHouse = sampleHouse
     for (let i = 2; i <= 7; i++) {
       const house = JSON.parse(JSON.stringify(this.topHouse))
       house.id = i

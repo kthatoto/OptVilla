@@ -39,12 +39,12 @@ export default {
   }
   .emptyStars {
     .icon {
-      color: #b3b3b3;
+      color: $gray;
     }
   }
   .valueStars {
     .icon {
-      color: #fc7c79;
+      color: $starPink;
     }
   }
 }

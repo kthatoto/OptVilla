@@ -6,9 +6,9 @@
   h2 {{ house.title }}
   p.price
     span.first １泊
-    span.second(v-if="house.maxStayerNumber")  (最大{{ house.maxStayerNumber }}人)
+    span.second(v-if="house.maxStayerNumber")  (最大{{ house.max_stay_number }}人)
     span.third /
-    span.fourth ¥{{ house.pricePerStay.toLocaleString() }}~
+    span.fourth ¥{{ house.price.toLocaleString() }}~
   Rate(:rate="house.rate")
 </template>
 
