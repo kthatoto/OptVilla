@@ -7,6 +7,7 @@
   p.houseDetail__explanation(v-text="house.body" style="white-space: pre;")
   h3 予約可能状況
   .houseDetail__calendar
+    available-date-calendar(:year="year" :month="month")
   h3 基本情報
   .houseDetail__basicInfo
     .row
@@ -51,13 +52,16 @@
 <script>
 import Customs from '@/components/organisms/Customs'
 import Rate from '@/components/molecules/Rate'
+import AvailableDateCalendar from '@/components/organisms/AvailableDateCalendar'
 import sampleCustoms from '@/sampleData/customs'
 export default {
-  components: { Customs, Rate },
+  components: { Customs, Rate, AvailableDateCalendar },
   props: ['house'],
   data () {
     return {
-      customs: []
+      customs: [],
+      year: -1,
+      month: -1
     }
   },
   computed: {
@@ -67,6 +71,9 @@ export default {
   },
   created () {
     this.customs = sampleCustoms
+    const date = new Date()
+    this.year = date.getFullYear()
+    this.month = date.getMonth()
   }
 }
 </script>
