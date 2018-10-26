@@ -46,12 +46,23 @@
             span {{ people.infant }}人
             icon.icon(name="plus" @click.native="people.infant += 1")
   .customs
-    label フードオプション
-    span(@click="$refs.modal.showing = true")
-      icon.icon(name="plus")
-      span 追加
-    customs-modal(ref="modal")
+    .label
+      label フードオプション
+      span(@click="$refs.modal.showing = true")
+        icon.icon(name="plus")
+        span 追加
+    customs-modal(ref="modal" :customs="customs")
+    .custom(v-for="custom in customs.filter(c => c.selected)") {{ custom.name }}
   .summary
+    .row
+      span.left ¥{{ house.price.toLocaleString() }} × {{ dateCount() }}泊
+      span.right ¥{{ totalBasePrice().toLocaleString() }}
+    .row(v-for="custom in customs.filter(c => c.selected)")
+      span.left ¥{{ custom.price.toLocaleString() }}({{ custom.name }}) × {{ people.adult + people.child }}人
+      span.right ¥{{ (custom.price * (people.adult + people.child)).toLocaleString() }}
+  .total
+    span.left 計
+    span.right ¥{{ total().toLocaleString() }}
   .button 予約リクエスト
 </template>
 
@@ -68,8 +79,24 @@ export default {
         infant: 0,
         expanding: false
       },
-      customs: {}
+      customs: [
+        { name: '中華料理', slug: 'chinese', image: 'Chinese.png', price: 4000 },
+        { name: '海鮮料理', slug: 'fish', image: 'Fish.png', price: 4000 },
+        { name: 'フランス料理', slug: 'french', image: 'French.png', price: 4000 },
+        { name: 'イタリア料理', slug: 'italian', image: 'Italian.png', price: 4000 },
+        { name: '日本料理', slug: 'jpanese', image: 'Jpanese.png', price: 4000 },
+        { name: 'パーティー', slug: 'party', image: 'Party.png', price: 3000 },
+        { name: '豪華ディナー', slug: 'dinner', image: 'dinner.png', price: 3000 },
+        { name: '懐石料理', slug: 'kaiseki', image: 'kaiseki.png', price: 3000 },
+        { name: 'ステーキ', slug: 'steak', image: 'steak.png', price: 3000 },
+        { name: 'すき焼き', slug: 'sukiyaki', image: 'sukiyaki.png', price: 3000 }
+      ]
     }
+  },
+  created () {
+    this.customs.forEach(custom => {
+      custom.selected = false
+    })
   },
   methods: {
     toggle () {
@@ -85,6 +112,30 @@ export default {
         return null
       }
       return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    },
+    select (i) {
+      this.customs[i].selected = !this.customs[i].selected
+      this.$refs.modal.update(this.customs)
+      this.$forceUpdate()
+    },
+    dateCount () {
+      if (this.selectedDate.start && this.selectedDate.end) {
+        return 1 + (this.selectedDate.end - this.selectedDate.start) / 86400000
+      }
+      return 0
+    },
+    totalBasePrice () {
+      const dateCount = this.dateCount()
+      return this.house.price * dateCount
+    },
+    total () {
+      let sum = 0
+      const peopleCount = this.people.adult + this.people.child
+      sum += this.totalBasePrice()
+      this.customs.filter(c => c.selected).forEach(custom => {
+        sum += custom.price * peopleCount
+      })
+      return sum
     }
   }
 }
@@ -203,6 +254,13 @@ export default {
   }
   .customs {
     overflow: hidden;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 16px;
+    .label {
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
     label {
       float: left;
     }
@@ -224,6 +282,36 @@ export default {
       padding: 2px;
       margin-right: 10px;
       vertical-align: text-bottom;
+    }
+    .custom {
+      width: 100%;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+  }
+  .summary {
+    font-size: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $gray;
+    .row {
+      overflow: hidden;
+      margin-bottom: 12px;
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+    }
+  }
+  .total {
+    margin-bottom: 12px;
+    overflow: hidden;
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
     }
   }
   .button {
