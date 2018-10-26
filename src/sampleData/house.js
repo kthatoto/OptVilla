@@ -75,25 +75,27 @@ export default {
     }
   ],
   'reviews': {
-    'satisfaction': 4,
-    'cleanliness': 4,
-    'cost_performance': 4,
-    'amenity': 4,
-    'location': 4,
-    'access': 4
+    'satisfaction': 4.1,
+    'cleanliness': 3.8,
+    'cost_performance': 0.3,
+    'amenity': 1.2,
+    'location': 3,
+    'access': 2.9
   },
   'room_reviews': [
     {
       'id': 1,
-      'review': 4,
+      'review': 4.2,
       'body': 'おすすめです。',
-      'created_at': '2018-10-17T17:20:08.639Z'
+      'created_at': '2018-10-17T17:20:08.639Z',
+      'reviewer': 'Char'
     },
     {
       'id': 2,
-      'review': 4,
+      'review': 3.1,
       'body': 'おすすめです。',
-      'created_at': '2018-10-10T17:20:08.639Z'
+      'created_at': '2018-10-10T17:20:08.639Z',
+      'reviewer': 'Char'
     }
   ]
 }

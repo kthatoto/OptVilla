@@ -24,7 +24,8 @@ export default {
     position: absolute;
   }
   .star {
-    // overflow: hidden;
+    position: relative;
+    overflow: hidden;
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -33,6 +34,7 @@ export default {
       margin-right: 0;
     }
     .icon {
+      position: absolute;
       width: 20px;
       height: 20px;
     }

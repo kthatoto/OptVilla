@@ -45,10 +45,47 @@
   p.houseDetail__access(v-text="house.access" style="white-space: pre;")
   gmap-map.houseDetail__map(:center="{lat: house.latitude, lng: house.longitude}" :zoom="13"
     style="width: 100%; height: 300px")
-  h3.houseDetail__rate-header
-    span レビュー
-    span
+  h3.houseDetail__rate
+    span.-header レビュー
+    span.-rate
       Rate.rate(:rate="rate")
+    span.-figure {{ rate }}
+  .houseDetail__rateDetail
+    .rateDetail
+      div 満足度
+      div
+        Rate(:rate="house.reviews.satisfaction")
+    .rateDetail
+      div 清潔さ
+      div
+        Rate(:rate="house.reviews.cleanliness")
+    .rateDetail
+      div コスパ
+      div
+        Rate(:rate="house.reviews.cost_performance")
+    .rateDetail
+      div 客室・アメニティー
+      div
+        Rate(:rate="house.reviews.amenity")
+    .rateDetail.-lastRow
+      div 眺め
+      div
+        Rate(:rate="house.reviews.location")
+    .rateDetail.-lastRow
+      div アクセス
+      div
+        Rate(:rate="house.reviews.access")
+  .houseDetail__reviews
+    .review(v-for="review in house.room_reviews" :key="review.id")
+      .review__header
+        h4
+          span.-name {{ review.reviewer }}さん
+          span のレビュー
+        .rate
+          icon.icon(name="star")
+          span.-figure {{ review.review }}
+        .date 投稿日 {{ review.created_at }}
+      .body(v-text="review.body" style="white-space: pre;")
 </template>
 
 <script>
@@ -66,7 +103,12 @@ export default {
   },
   computed: {
     rate () {
-      return 4
+      const reviews = Object.entries(this.house.reviews)
+      let sum = 0
+      reviews.forEach(review => {
+        sum += review[1]
+      })
+      return sum / reviews.length
     }
   },
   created () {
@@ -77,18 +119,18 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/styles/resources';
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+p {
+  font-size: 14px;
+}
 .houseDetail {
-  h1 {
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-  h3 {
-    font-size: 22px;
-    margin-bottom: 18px;
-  }
-  p {
-    font-size: 14px;
-  }
   &__number {
     color: $gray;
     margin-bottom: 18px;
@@ -155,8 +197,88 @@ export default {
     margin-bottom: 18px;
   }
   &__rate {
-    &-header {
-      > span {
+    overflow: hidden;
+    border-bottom: 1px solid $gray;
+    padding-bottom: 10px;
+    > span {
+      float: left;
+    }
+    .-header {
+      width: 180px;
+    }
+    .rate {
+      width: 108px;
+      height: 30px;
+      margin-top: 2px;
+    }
+    .-figure {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 30px;
+      height: 30px;
+      margin-left: 10px;
+      padding-top: 2px;
+    }
+  }
+  &__rateDetail {
+    overflow: hidden;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 24px;
+    .rateDetail {
+      font-size: 16px;
+      font-weight: bold;
+      width: 360px;
+      float: left;
+      margin-bottom: 24px;
+      > div {
+        width: 180px;
+        float: left;
+      }
+      &.-lastRow {
+        margin-bottom: 18px;
+      }
+    }
+  }
+  &__reviews {
+    .review {
+      padding-bottom: 24px;
+      width: 100%;
+      border-bottom: 1px solid $gray;
+      margin-bottom: 24px;
+      &__header {
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      h4 {
+        font-size: 14px;
+        float: left;
+        .-name {
+          color: $pink;
+        }
+        height: 20px;
+        line-height: 20px;
+      }
+      .rate {
+        float: left;
+        height: 20px;
+        line-height: 20px;
+        .icon {
+          margin: 0 15px;
+          width: 15px;
+          height: 15px;
+          vertical-align: text-top;
+          color: $starPink;
+        }
+        .-figure {
+          font-size: 14px;
+        }
+      }
+      .date {
+        font-size: 14px;
+        float: right;
+      }
+      .body {
+        font-size: 14px;
       }
     }
   }

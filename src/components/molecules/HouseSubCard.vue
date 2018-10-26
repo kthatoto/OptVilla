@@ -19,7 +19,7 @@ export default {
   components: { Rate },
   computed: {
     rate () {
-      return 4
+      return 3.8
     }
   }
 }
