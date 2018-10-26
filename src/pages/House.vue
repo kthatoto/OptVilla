@@ -5,14 +5,16 @@
     .leftColumn
       house-detail(:house="house")
     .rightColumn
+      Reservation(:house="house")
 </template>
 
 <script>
 import Keyvisual from '@/components/molecules/Keyvisual'
 import HouseDetail from '@/components/organisms/HouseDetail'
+import Reservation from '@/components/organisms/Reservation'
 import sampleHouse from '@/sampleData/house'
 export default {
-  components: { Keyvisual, HouseDetail },
+  components: { Keyvisual, HouseDetail, Reservation },
   data () {
     return {
       house: {}
@@ -36,9 +38,12 @@ export default {
   }
   $leftColumnWidth: 720px;
   .leftColumn {
+    float: left;
     width: $leftColumnWidth;
   }
   .rightColumn {
+    float: left;
+    padding-left: 60px;
     width: calc(#{$globalWidth} - #{$leftColumnWidth});
   }
 }

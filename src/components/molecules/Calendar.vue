@@ -87,11 +87,11 @@ export default {
         font-size: 14px;
       }
       &.-available {
-        background-color: $thinPink;
+        background-color: $pink;
         color: white;
         cursor: pointer;
         &:hover {
-          background-color: $pink;
+          background-color: $thinPink;
         }
         &.-selected {
           background-color: $blue;
