@@ -63,7 +63,7 @@
   .total
     span.left 計
     span.right ¥{{ total().toLocaleString() }}
-  .button 予約リクエスト
+  .button(:class="{'-disabled': dateCount() <= 0}" @click="request") 予約リクエスト
 </template>
 
 <script>
@@ -136,6 +136,11 @@ export default {
         sum += custom.price * peopleCount
       })
       return sum
+    },
+    request () {
+      if (this.dateCount() <= 0) {
+        return
+      }
     }
   }
 }
@@ -293,6 +298,7 @@ export default {
     font-size: 14px;
     padding-bottom: 8px;
     border-bottom: 1px solid $gray;
+    margin-bottom: 12px;
     .row {
       overflow: hidden;
       margin-bottom: 12px;
@@ -307,6 +313,7 @@ export default {
   .total {
     margin-bottom: 12px;
     overflow: hidden;
+    font-weight: bold;
     .left {
       float: left;
     }
@@ -325,6 +332,10 @@ export default {
     user-select: none;
     &:hover {
       background-color: $thinPink;
+    }
+    &.-disabled {
+      background-color: $gray;
+      cursor: not-allowed;
     }
   }
 }
