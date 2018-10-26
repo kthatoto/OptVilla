@@ -5,7 +5,7 @@
     .leftColumn
       house-detail(:house="house" ref="hd")
     .rightColumn
-      Reservation(:house="house")
+      Reservation(:house="house" :selectedDate="selectedDate")
 </template>
 
 <script>
@@ -17,7 +17,11 @@ export default {
   components: { Keyvisual, HouseDetail, Reservation },
   data () {
     return {
-      house: {}
+      house: {},
+      selectedDate: {
+        start: null,
+        end: null
+      }
     }
   },
   created () {

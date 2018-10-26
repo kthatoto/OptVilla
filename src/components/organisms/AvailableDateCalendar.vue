@@ -113,6 +113,14 @@ export default {
         this.flashing = false
       }, 2000)
     }
+  },
+  watch: {
+    selectedDate: {
+      deep: true,
+      handler () {
+        this.$parent.$parent.selectedDate = this.selectedDate
+      }
+    }
   }
 }
 </script>

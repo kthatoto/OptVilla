@@ -5,12 +5,14 @@
   .date
     .checkin
       label チェックイン
-      input(placeholder="yyyy/mm/dd" @click="scrollToCalendar")
+      div(@click="scrollToCalendar")
+        input(placeholder="yyyy/mm/dd" :value="formatDate(selectedDate.start)" disabled)
     .arrow
       icon(name="arrow-right")
     .checkout
       label チェックアウト
-      input(placeholder="yyyy/mm/dd" @click="scrollToCalendar")
+      div(@click="scrollToCalendar")
+        input(placeholder="yyyy/mm/dd" :value="formatDate(selectedDate.end)" disabled)
   .people
     label 人数
     .people__input
@@ -43,6 +45,7 @@
               @click.native="people.infant = Math.max(0, people.infant - 1)")
             span {{ people.infant }}人
             icon.icon(name="plus" @click.native="people.infant += 1")
+  .summary
   .button 予約リクエスト
 </template>
 
@@ -50,7 +53,7 @@
 import Select from '@/components/atoms/Select'
 export default {
   components: { Select },
-  props: ['house'],
+  props: ['house', 'selectedDate'],
   data () {
     return {
       people: {
@@ -69,6 +72,12 @@ export default {
       this.$SmoothScroll(document.getElementById('calendars'), 800, () => {
         this.$parent.flashCalendarDates()
       })
+    },
+    formatDate (date) {
+      if (!date || date.getFullYear() === 1970) {
+        return null
+      }
+      return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
     }
   }
 }
@@ -100,11 +109,11 @@ export default {
     display: flex;
     $arrowWidth: 50px;
     margin-bottom: 24px;
-    .checkin {
+    .checkin, .checkout {
       width: calc((100% - #{$arrowWidth}) / 2);
-    }
-    .checkout {
-      width: calc((100% - #{$arrowWidth}) / 2);
+      input {
+        cursor: pointer;
+      }
     }
     .arrow {
       padding-top: 40px;
