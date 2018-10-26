@@ -7,7 +7,7 @@
   p.houseDetail__explanation(v-text="house.body" style="white-space: pre;")
   h3 予約可能状況
   .houseDetail__calendar
-    available-date-calendar(:year="year" :month="month")
+    available-date-calendar(:year="year" :month="month" :availableDates="house.available_date")
   h3 基本情報
   .houseDetail__basicInfo
     .row

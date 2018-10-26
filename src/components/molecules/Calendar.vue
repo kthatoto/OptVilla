@@ -3,9 +3,9 @@
   .days
     .day(v-for="day in ['日', '月', '火', '水', '木', '金', '土']") {{ day }}
   .dates
-    .date.-empty(v-for="(date, index) in marginDates" :key="index")
+    .date.-empty(v-for="(date, index) in marginDates" :key="'empty' + index")
     .date(v-for="(date, index) in dates" :key="index"
-      :class="{'-available': date.date.getDate() % 3 === 0}") {{ date.date.getDate() }}
+      :class="{'-available': date.available}") {{ date.date.getDate() }}
 </template>
 
 <script>
@@ -22,8 +22,11 @@ export default {
     const currentMonthDateNumber = new Date(this.year, this.month + 1, 0).getDate()
     let dates = []
     for (let i = 1; i <= currentMonthDateNumber; i++) {
+      const fullDate = `${this.year}-${this.month + 1}-${('00' + i).slice(-2)}`
+      const available = this.availableDates.indexOf(fullDate) >= 0
       dates.push({
-        date: new Date(this.year, this.month, i)
+        date: new Date(this.year, this.month, i),
+        available: available
       })
     }
     this.dates = dates
@@ -37,7 +40,6 @@ export default {
   $betweenMargin: 10px;
   .days, .dates {
     display: flex;
-    // justify-content: space-between;
     flex-wrap: wrap;
     .day, .date {
       text-align: center;
@@ -67,9 +69,12 @@ export default {
         font-size: 14px;
       }
       &.-available {
-        background-color: $pink;
+        background-color: $thinPink;
         color: white;
         cursor: pointer;
+        &:hover {
+          background-color: $pink;
+        }
       }
       &:not(.-available) {
         cursor: not-allowed;

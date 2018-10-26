@@ -1,14 +1,14 @@
 <template lang="pug">
 .availableDateCalendar
-  Calendar(:year="year" :month="month").calendar
-  Calendar(:year="next.year", :month="next.month").calendar
+  Calendar(:year="year" :month="month" :availableDates="availableDates").calendar
+  Calendar(:year="next.year", :month="next.month" :availableDates="availableDates").calendar
 </template>
 
 <script>
 import Calendar from '@/components/molecules/Calendar'
 export default {
   components: { Calendar },
-  props: ['year', 'month'],
+  props: ['year', 'month', 'availableDates'],
   data () {
     return {
       next: {
