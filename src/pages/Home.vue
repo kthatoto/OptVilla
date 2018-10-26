@@ -15,18 +15,14 @@ import HouseSubCard from '@/components/molecules/HouseSubCard'
 import Houses from '@/components/organisms/Houses'
 import Customs from '@/components/organisms/Customs'
 import sampleHouse from '@/sampleData/house'
+import sampleCustoms from '@/sampleData/customs'
 export default {
   components: { Keyvisual, HouseSubCard, Houses, Customs },
   data () {
     return {
       topHouse: {},
       recommends: [],
-      customs: [
-        { id: 1, name: 'レンタルシップ', slug: 'cruiging' },
-        { id: 2, name: 'イタリアンディナー', slug: 'dinner' },
-        { id: 3, name: 'マッサージ・エステ', slug: 'massage' },
-        { id: 4, name: 'マッサージ・エステ', slug: 'massage' }
-      ]
+      customs: []
     }
   },
   created () {
@@ -37,6 +33,7 @@ export default {
       house.height = i % 3 === 0 ? 300 : 200
       this.recommends.push(house)
     }
+    this.customs = sampleCustoms
   }
 }
 </script>

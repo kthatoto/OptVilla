@@ -24,7 +24,7 @@ export default {
     position: absolute;
   }
   .star {
-    overflow: hidden;
+    // overflow: hidden;
     display: inline-block;
     width: 20px;
     height: 20px;

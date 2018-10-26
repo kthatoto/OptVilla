@@ -1,6 +1,6 @@
 <template lang="pug">
 .customs
-  h2
+  h2(v-if="title !== false")
     span.prebox
     | フードオプションから選ぶ
   .customs__list
@@ -15,7 +15,7 @@
 <script>
 import CustomCard from '@/components/molecules/CustomCard'
 export default {
-  props: ['customs'],
+  props: ['customs', 'title'],
   components: { CustomCard },
   data () {
     return {

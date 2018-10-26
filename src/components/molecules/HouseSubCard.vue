@@ -9,14 +9,19 @@
     span.second(v-if="house.maxStayerNumber")  (最大{{ house.max_stay_number }}人)
     span.third /
     span.fourth ¥{{ house.price.toLocaleString() }}~
-  Rate(:rate="house.rate")
+  Rate(:rate="rate")
 </template>
 
 <script>
 import Rate from '@/components/molecules/Rate'
 export default {
   props: ['house'],
-  components: { Rate }
+  components: { Rate },
+  computed: {
+    rate () {
+      return 4
+    }
+  }
 }
 </script>
 
