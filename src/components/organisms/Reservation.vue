@@ -5,12 +5,12 @@
   .date
     .checkin
       label チェックイン
-      input(placeholder="yyyy/mm/dd")
+      input(placeholder="yyyy/mm/dd" @click="scrollToCalendar")
     .arrow
       icon(name="arrow-right")
     .checkout
       label チェックアウト
-      input(placeholder="yyyy/mm/dd")
+      input(placeholder="yyyy/mm/dd" @click="scrollToCalendar")
   .people
     label 人数
     .people__input
@@ -64,6 +64,11 @@ export default {
   methods: {
     toggle () {
       this.people.expanding = !this.people.expanding
+    },
+    scrollToCalendar () {
+      this.$SmoothScroll(document.getElementById('calendars'), 800, () => {
+        this.$parent.flashCalendarDates()
+      })
     }
   }
 }

@@ -3,7 +3,7 @@
   Keyvisual.keyvisual
   .main
     .leftColumn
-      house-detail(:house="house")
+      house-detail(:house="house" ref="hd")
     .rightColumn
       Reservation(:house="house")
 </template>
@@ -22,6 +22,11 @@ export default {
   },
   created () {
     this.house = sampleHouse
+  },
+  methods: {
+    flashCalendarDates () {
+      this.$refs.hd.flashCalendarDates()
+    }
   }
 }
 </script>

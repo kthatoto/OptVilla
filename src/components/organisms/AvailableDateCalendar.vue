@@ -105,6 +105,9 @@ export default {
       const nextMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
       this.next.year = nextMonth.getFullYear()
       this.next.month = nextMonth.getMonth()
+    },
+    flashCalendarDates () {
+      alert(213089109)
     }
   }
 }

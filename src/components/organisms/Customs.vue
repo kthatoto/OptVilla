@@ -4,10 +4,8 @@
     span.prebox
     | フードオプションから選ぶ
   .customs__list
-    img.customs__cursor.-left(:src="require('../../assets/ButtonLeft.png')"
-      v-scroll-to="customOptions.left")
-    img.customs__cursor.-right(:src="require('../../assets/ButtonRight.png')"
-      v-scroll-to="customOptions.right")
+    img.customs__cursor.-left(:src="require('../../assets/ButtonLeft.png')")
+    img.customs__cursor.-right(:src="require('../../assets/ButtonRight.png')")
     .customs__scroll
       CustomCard.customs__item(v-for="custom in customs" :key="custom.id" :custom="custom")
 </template>
@@ -18,26 +16,7 @@ export default {
   props: ['customs', 'title'],
   components: { CustomCard },
   data () {
-    return {
-      customOptions: {
-        left: {
-          el: '.customs__scroll .customs__item:first-child',
-          container: '.customs__scroll',
-          duration: 500,
-          offset: 0,
-          x: true,
-          y: false
-        },
-        right: {
-          el: '.customs__scroll .customs__item:last-child',
-          container: '.customs__scroll',
-          duration: 500,
-          offset: -720,
-          x: true,
-          y: false
-        }
-      }
-    }
+    return {}
   }
 }
 </script>

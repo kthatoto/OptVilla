@@ -5,9 +5,9 @@
     | 許可・登録番号
     span M130002147
   p.houseDetail__explanation(v-text="house.body" style="white-space: pre;")
-  h3 予約可能状況
+  h3#calendars.-caleanderHeader 予約可能状況
   .houseDetail__calendar
-    available-date-calendar(:availableDates="house.available_date")
+    available-date-calendar(:availableDates="house.available_date" ref="adc")
   h3 基本情報
   .houseDetail__basicInfo
     .row
@@ -113,6 +113,11 @@ export default {
   },
   created () {
     this.customs = sampleCustoms
+  },
+  methods: {
+    flashCalendarDates () {
+      this.$refs.adc.flashCalendarDates()
+    }
   }
 }
 </script>
@@ -126,6 +131,9 @@ h1 {
 h3 {
   font-size: 22px;
   margin-bottom: 18px;
+  &.-caleanderHeader {
+    padding-top: 48px;
+  }
 }
 p {
   font-size: 14px;
@@ -143,7 +151,6 @@ p {
     padding-bottom: 18px;
     line-height: 1.8;
     border-bottom: 1px solid $gray;
-    margin-bottom: 48px;
   }
   &__calendar {
     margin-bottom: 48px;
