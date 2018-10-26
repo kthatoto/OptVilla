@@ -43,8 +43,8 @@
   Customs.houseDetail__customs.customs(:customs="customs" :title="false")
   h3 アクセス
   p.houseDetail__access(v-text="house.access" style="white-space: pre;")
-  gmap-map(:center="{lat:10, lng:10}" :zoom="7" map-type-id="terrain"
-    style="width: 500px; height: 300px")
+  gmap-map.houseDetail__map(:center="{lat:10, lng:10}" :zoom="7" map-type-id="terrain"
+    style="width: 100%; height: 300px")
   h3.houseDetail__rate-header
     span レビュー
     span
@@ -138,6 +138,9 @@ export default {
         margin-bottom: 20px;
       }
     }
+  }
+  &__map {
+    margin-bottom: 48px;
   }
   /deep/ .customs {
     .customCard {
