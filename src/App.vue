@@ -24,6 +24,10 @@ html {
   list-style: none;
   text-decoration: none;
 }
+::selection {
+  background-color: $pink;
+  color: white;
+}
 body {
   background-color: $white;
   color: $black;

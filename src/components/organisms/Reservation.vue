@@ -45,6 +45,11 @@
               @click.native="people.infant = Math.max(0, people.infant - 1)")
             span {{ people.infant }}人
             icon.icon(name="plus" @click.native="people.infant += 1")
+  .customs
+    label フードオプション
+    span
+      icon.icon(name="plus")
+      span 追加
   .summary
   .button 予約リクエスト
 </template>
@@ -122,6 +127,7 @@ export default {
     }
   }
   .people {
+    margin-bottom: 24px;
     &__input {
       padding: 10px;
       border-radius: 5px;
@@ -191,6 +197,31 @@ export default {
           margin-left: 10px;
         }
       }
+    }
+  }
+  .customs {
+    overflow: hidden;
+    label {
+      float: left;
+    }
+    span {
+      float: right;
+      font-size: 14px;
+      color: $blue;
+      cursor: pointer;
+      > span {
+        vertical-align: middle;
+      }
+    }
+    .icon {
+      width: 18px;
+      height: 18px;
+      border: 1px solid $blue;
+      color: $blue;
+      border-radius: 50%;
+      padding: 2px;
+      margin-right: 10px;
+      vertical-align: text-bottom;
     }
   }
   .button {
