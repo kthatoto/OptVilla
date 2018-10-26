@@ -7,7 +7,7 @@
       icon.icon(name="chevron-left")
     span.monthChange.-next(@click="nextMonth")
       icon.icon(name="chevron-right")
-  .calendars
+  .calendars(:class="{'-flashing': flashing}")
     Calendar.calendar(:year="current.year" :month="current.month"
       :availableDates="availableDates" :selectedDate="selectedDate")
     Calendar.calendar(:year="next.year", :month="next.month"
@@ -33,7 +33,8 @@ export default {
         start: new Date(0),
         end: new Date(0),
         selecting: false
-      }
+      },
+      flashing: false
     }
   },
   created () {
@@ -107,18 +108,33 @@ export default {
       this.next.month = nextMonth.getMonth()
     },
     flashCalendarDates () {
-      alert(213089109)
+      this.flashing = true
+      setTimeout(() => {
+        this.flashing = false
+      }, 2000)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/resources';
 .availableDateCalendar {
   .calendars {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    &.-flashing {
+      /deep/ .date.-available:not(.-selected) {
+        animation: flash 0.2s ease 0s 4 alternate;
+      }
+    }
+    @keyframes flash {
+      100% {
+        background-color: $thinPink;
+        transform: scale(1.05);
+      }
+    }
   }
   .calendar {
     width: 340px;
