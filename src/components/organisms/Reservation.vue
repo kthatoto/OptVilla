@@ -47,17 +47,18 @@
             icon.icon(name="plus" @click.native="people.infant += 1")
   .customs
     label フードオプション
-    span
+    span(@click="$refs.modal.showing = true")
       icon.icon(name="plus")
       span 追加
+    customs-modal(ref="modal")
   .summary
   .button 予約リクエスト
 </template>
 
 <script>
-import Select from '@/components/atoms/Select'
+import CustomsModal from '@/components/organisms/CustomsModal'
 export default {
-  components: { Select },
+  components: { CustomsModal },
   props: ['house', 'selectedDate'],
   data () {
     return {
@@ -66,7 +67,8 @@ export default {
         child: 0,
         infant: 0,
         expanding: false
-      }
+      },
+      customs: {}
     }
   },
   methods: {

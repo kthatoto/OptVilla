@@ -4,10 +4,10 @@
     span.prebox
     | フードオプションから選ぶ
   .customs__list
-    img.customs__cursor.-left(:src="require('../../assets/ButtonLeft.png')")
-    img.customs__cursor.-right(:src="require('../../assets/ButtonRight.png')")
     .customs__scroll
       CustomCard.customs__item(v-for="custom in customs" :key="custom.id" :custom="custom")
+    img.customs__cursor.-left(:src="require('../../assets/ButtonLeft.png')")
+    img.customs__cursor.-right(:src="require('../../assets/ButtonRight.png')")
 </template>
 
 <script>
@@ -49,7 +49,7 @@ export default {
     position: absolute;
     width: 50px;
     height: 50px;
-    z-index: 1;
+    // z-index: 1;
     filter: drop-shadow(0 0 6px $black);
     cursor: pointer;
     &.-left {

@@ -32,6 +32,9 @@ body {
   background-color: $white;
   color: $black;
   line-height: 1.4;
+  &.-modaling {
+    overflow: hidden;
+  }
 }
 a {
   color: inherit;
