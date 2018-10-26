@@ -12,6 +12,7 @@ Vue.use(VueScrollTo)
 Vue.component('icon', Icon)
 
 Vue.config.productionTip = false
+console.log(process.env.GOOGLE_MAP_API_KEY)
 
 Vue.use(VueGoogleMaps, {
   load: {
