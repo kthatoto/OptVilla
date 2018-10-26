@@ -1,33 +1,30 @@
 <template lang="pug">
-.search
-  Modal(ref="modal" width="450px" height="550px")
-    .inner
-      .place
-        label 場所
-        input(placeholder="どこでも")
-      .date
-        .checkin
-          label チェックイン
-          input(placeholder="yyyy/mm/dd")
-        .arrow
-          icon(name="arrow-right")
-        .checkout
-          label チェックアウト
-          input(placeholder="yyyy/mm/dd")
-      .count
-        label 人数
-        Select(:options="countOptions")
-      .price
-        label 値段
-        Select(:options="priceOptions")
-      .button(@click="incIndex") {{ searchButton.word.slice(0, searchButton.index) }}
+.reservation
+  .inner
+    .place
+      label 場所
+      input(placeholder="どこでも")
+    .date
+      .checkin
+        label チェックイン
+        input(placeholder="yyyy/mm/dd")
+      .arrow
+        icon(name="arrow-right")
+      .checkout
+        label チェックアウト
+        input(placeholder="yyyy/mm/dd")
+    .count
+      label 人数
+      Select(:options="countOptions")
+    .price
+      label 値段
+      Select(:options="priceOptions")
 </template>
 
 <script>
-import Modal from '@/components/organisms/Modal'
 import Select from '@/components/atoms/Select'
 export default {
-  components: { Modal, Select },
+  components: { Select },
   data () {
     return {
       countOptions: ['ゲスト1人', 'ゲスト2人', 'ゲスト3人'],
@@ -37,23 +34,10 @@ export default {
         'なんだかかんだ ¥3,000~¥5,000',
         'そうはいっても ¥5,000~¥10,000',
         'もはやいさぎよく ¥10,000~'
-      ],
-      searchButton: {
-        word: '検索しても何も起きないよ...',
-        index: 2
-      }
+      ]
     }
   },
   methods: {
-    showModal () {
-      this.$refs.modal.showing = true
-    },
-    incIndex () {
-      this.searchButton.index++
-      if (this.searchButton.index > 20) {
-        alert('おしすぎ')
-      }
-    }
   }
 }
 </script>
