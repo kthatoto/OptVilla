@@ -125,13 +125,23 @@ export default {
     display: flex;
     justify-content: space-between;
     &.-flashing {
-      /deep/ .date.-available:not(.-selected) {
-        animation: flash 0.2s ease 0s 4 alternate;
+      /deep/ {
+        .date.-available:not(.-selected) {
+          animation: flash1 0.2s ease 0s 4 alternate;
+        }
+        .date.-available.-selected {
+          animation: flash2 0.2s ease 0s 4 alternate;
+        }
       }
     }
-    @keyframes flash {
+    @keyframes flash1 {
       100% {
         background-color: $thinPink;
+        transform: scale(1.05);
+      }
+    }
+    @keyframes flash2 {
+      100% {
         transform: scale(1.05);
       }
     }
