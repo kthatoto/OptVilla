@@ -32,6 +32,7 @@ export default {
   .main {
     width: $globalWidth;
     margin: 0 auto;
+    display: flex;
   }
   .keyvisual {
     margin-bottom: 100px;

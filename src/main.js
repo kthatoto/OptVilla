@@ -5,10 +5,10 @@ import App from './App'
 import router from './router'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
-import VueScrollTo from 'vue-scrollto'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import VueSmoothScroll from 'vue-smoothscroll'
 
-Vue.use(VueScrollTo)
+Vue.use(VueSmoothScroll)
 Vue.component('icon', Icon)
 
 Vue.config.productionTip = false

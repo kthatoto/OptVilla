@@ -72,6 +72,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/resources';
 .reservation {
+  position: sticky;
+  top: 30px;
+  margin-top: 0;
   background-color: white;
   border-radius: 15px;
   padding: 24px;
@@ -160,6 +163,9 @@ export default {
         width: 100%;
         overflow: hidden;
         margin-bottom: 16px;
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
       &__label {
         font-weight: bold;
