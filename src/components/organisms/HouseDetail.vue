@@ -21,7 +21,7 @@
       .data
         table
           tr
-            td 寝室 {{ house.bed_room }}部屋
+            td 寝室 {{ house.bed_room_num }}部屋
             td ベッド {{ house.bed_num }}台
           tr
             td トイレ {{ house.toilet_num }}台
@@ -43,7 +43,7 @@
   Customs.houseDetail__customs.customs(:customs="customs" :title="false")
   h3 アクセス
   p.houseDetail__access(v-text="house.access" style="white-space: pre;")
-  gmap-map.houseDetail__map(:center="{lat:10, lng:10}" :zoom="7" map-type-id="terrain"
+  gmap-map.houseDetail__map(:center="{lat: house.latitude, lng: house.longitude}" :zoom="13"
     style="width: 100%; height: 300px")
   h3.houseDetail__rate-header
     span レビュー
