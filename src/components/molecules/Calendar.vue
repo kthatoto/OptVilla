@@ -4,13 +4,14 @@
     .day(v-for="day in ['日', '月', '火', '水', '木', '金', '土']") {{ day }}
   .dates
     .date.-empty(v-for="(date, index) in marginDates" :key="'empty' + index")
-    .date(v-for="(date, index) in dates" :key="index"
-      :class="{'-available': date.available}") {{ date.date.getDate() }}
+    .date(v-for="(date, index) in dates" :key="index" @click="$parent.selectDate(date.date)"
+      :class="{'-available': date.available, '-selected': selected(index)}")
+        | {{ date.date.getDate() }}
 </template>
 
 <script>
 export default {
-  props: ['year', 'month', 'availableDates'],
+  props: ['year', 'month', 'availableDates', 'selectedDate'],
   data () {
     return {
       marginDates: [],
@@ -22,14 +23,22 @@ export default {
     const currentMonthDateNumber = new Date(this.year, this.month + 1, 0).getDate()
     let dates = []
     for (let i = 1; i <= currentMonthDateNumber; i++) {
-      const fullDate = `${this.year}-${this.month + 1}-${('00' + i).slice(-2)}`
-      const available = this.availableDates.indexOf(fullDate) >= 0
+      const formattedDate = `${this.year}-${this.month + 1}-${('00' + i).slice(-2)}`
+      const available = this.availableDates.indexOf(formattedDate) >= 0
       dates.push({
         date: new Date(this.year, this.month, i),
-        available: available
+        available: available,
+        formattedDate: formattedDate
       })
     }
     this.dates = dates
+  },
+  methods: {
+    selected (index) {
+      const date = this.dates[index].date
+      const inner = this.selectedDate.start <= date && date <= this.selectedDate.end
+      return this.selectedDate.selecting && inner
+    }
   }
 }
 </script>
@@ -74,6 +83,9 @@ export default {
         cursor: pointer;
         &:hover {
           background-color: $pink;
+        }
+        &.-selected {
+          background-color: $blue;
         }
       }
       &:not(.-available) {
