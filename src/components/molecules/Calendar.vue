@@ -19,25 +19,33 @@ export default {
     }
   },
   created () {
-    this.marginDates = new Array(new Date(this.year, this.month).getDay())
-    const currentMonthDateNumber = new Date(this.year, this.month + 1, 0).getDate()
-    let dates = []
-    for (let i = 1; i <= currentMonthDateNumber; i++) {
-      const formattedDate = `${this.year}-${this.month + 1}-${('00' + i).slice(-2)}`
-      const available = this.availableDates.indexOf(formattedDate) >= 0
-      dates.push({
-        date: new Date(this.year, this.month, i),
-        available: available,
-        formattedDate: formattedDate
-      })
-    }
-    this.dates = dates
+    this.prepare()
   },
   methods: {
     selected (index) {
       const date = this.dates[index].date
       const inner = this.selectedDate.start <= date && date <= this.selectedDate.end
       return this.selectedDate.selecting && inner
+    },
+    prepare () {
+      this.marginDates = new Array(new Date(this.year, this.month).getDay())
+      const currentMonthDateNumber = new Date(this.year, this.month + 1, 0).getDate()
+      let dates = []
+      for (let i = 1; i <= currentMonthDateNumber; i++) {
+        const formattedDate = `${this.year}-${this.month + 1}-${('00' + i).slice(-2)}`
+        const available = this.availableDates.indexOf(formattedDate) >= 0
+        dates.push({
+          date: new Date(this.year, this.month, i),
+          available: available,
+          formattedDate: formattedDate
+        })
+      }
+      this.dates = dates
+    }
+  },
+  watch: {
+    month () {
+      this.prepare()
     }
   }
 }
@@ -50,6 +58,7 @@ export default {
   .days, .dates {
     display: flex;
     flex-wrap: wrap;
+    user-select: none;
     .day, .date {
       text-align: center;
       width: calc((100% - #{$betweenMargin} * 6) / 7);
