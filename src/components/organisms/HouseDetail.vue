@@ -46,7 +46,7 @@
     span.-header レビュー
     span.-rate
       Rate.rate(:rate="rate")
-    span.-figure {{ rate }}
+    span.-figure {{ Math.floor( rate * Math.pow( 10, 1 ) ) / Math.pow( 10, 1 ) }}
   .houseDetail__rateDetail
     .rateDetail
       div 満足度
