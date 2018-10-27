@@ -39,12 +39,10 @@
     .row
       .header お子様
       .data(v-text="house.child")
-  <!-- h3 フードオプション -->
-  <!-- Customs.houseDetail__customs.customs(:customs="customs" :title="false") -->
   h3 アクセス
   p.houseDetail__access(v-text="house.access")
   img(:src="require('@/assets/map.png')" style="width: 100%; height: 300px")
-  h3.houseDetail__rate
+  h3.houseDetail__rate(style="margin-top: 30px;")
     span.-header レビュー
     span.-rate
       Rate.rate(:rate="rate")
