@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/pages/Home'
 import Search from '@/pages/Search'
 import House from '@/pages/House'
+import Request from '@/pages/Request'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/house/:id',
       name: 'House',
       component: House
+    },
+    {
+      path: '/request',
+      name: 'Request',
+      component: Request
     }
   ]
 })

@@ -141,6 +141,7 @@ export default {
       if (this.dateCount() <= 0) {
         return
       }
+      this.$router.push('/request')
     }
   }
 }
