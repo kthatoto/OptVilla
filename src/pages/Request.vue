@@ -7,6 +7,9 @@
   Payment.payment(v-show="progress === 'payment'")
   Confirmation.confirmation(v-show="progress === 'confirmation'")
   .complete(v-show="progress === 'complete'")
+    .main
+      h2 ご予約ありがとうございました
+    .next(@click="close") 閉じる
 </template>
 
 <script>
@@ -17,6 +20,11 @@ export default {
   data () {
     return {
       progress: 'payment'
+    }
+  },
+  methods: {
+    close () {
+      this.$router.push('/')
     }
   }
 }
@@ -42,6 +50,28 @@ export default {
       &.-current {
         color: $pink;
       }
+    }
+  }
+  .complete {
+    .main {
+      text-align: center;
+      background-color: white;
+      border-radius: 10px;
+      padding: 180px 0;
+      margin-bottom: 24px;
+    }
+  }
+  .next {
+    background-color: $pink;
+    width: 25%;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    float: right;
+    &:hover {
+      background-color: $thinPink;
     }
   }
 }

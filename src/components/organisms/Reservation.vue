@@ -16,12 +16,12 @@
   .people
     label 人数
     .people__input
-      .people__numbers(:class="{'-expanding': people.expanding}" @click="toggle")
+      .people__numbers(:class="{'-expanding': expanding}" @click="toggle")
         span.people__number 大人 {{ people.adult }}人
         span.people__number(v-show="people.child > 0") 小人 {{ people.child }}人
         span.people__number(v-show="people.infant > 0") 乳幼児 {{ people.infant }}人
         icon.icon(name="chevron-down")
-      .people__console(v-show="people.expanding")
+      .people__console(v-show="expanding")
         .console__row
           .console__label 大人
           .console
@@ -76,9 +76,9 @@ export default {
       people: {
         adult: 1,
         child: 0,
-        infant: 0,
-        expanding: false
+        infant: 0
       },
+      expanding: false,
       customs: [
         { name: '中華料理', slug: 'chinese', image: 'Chinese.png', price: 4000 },
         { name: '海鮮料理', slug: 'fish', image: 'Fish.png', price: 4000 },
@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     toggle () {
-      this.people.expanding = !this.people.expanding
+      this.expanding = !this.expanding
     },
     scrollToCalendar () {
       this.$SmoothScroll(document.getElementById('calendars'), 800, () => {
@@ -141,6 +141,20 @@ export default {
       if (this.dateCount() <= 0) {
         return
       }
+      const start = this.selectedDate.start
+      const end = this.selectedDate.end
+      localStorage.reservation = JSON.stringify({
+        title: this.house.title,
+        price: this.house.price,
+        start: `${start.getFullYear()}-${start.getMonth() + 1}-${start.getDate()}`,
+        end: `${end.getFullYear()}-${end.getMonth() + 1}-${end.getDate()}`,
+        startFormatted: `${start.getFullYear()}年${start.getMonth() + 1}月${start.getDate()}日`,
+        endFormatted: `${end.getFullYear()}年${end.getMonth() + 1}月${end.getDate()}日`,
+        dateCount: this.dateCount(),
+        people: this.people,
+        customs: this.customs.filter(c => c.selected),
+        total: this.total()
+      })
       this.$router.push('/request')
     }
   }

@@ -20,14 +20,14 @@
           span.right 有効期限とは
         span.split 月
         span.split 年
-        input.split(placeholder="10")
-        input.split(placeholder="18")
+        input.split.-left(placeholder="10")
+        input.split.-right(placeholder="18")
       .row
         h3
           span.left セキュリティーコード
           span.right セキュリティーコードとは
         input.split(placeholder="123")
-  .next 次へ
+  .next(@click="$parent.progress = 'confirmation'") 次へ
 </template>
 
 <script>
@@ -42,6 +42,7 @@ export default {
     background-color: white;
     border-radius: 10px;
     padding: 20px 0;
+    margin-bottom: 24px;
     .inner {
       width: 50%;
       margin: 0 auto;
@@ -52,6 +53,13 @@ export default {
       .split {
         float: left;
         width: 50%;
+        &.-left {
+          border-right: none;
+          border-radius: 5px 0 0 5px;
+        }
+        &.-right {
+          border-radius: 0 5px 5px 0;
+        }
       }
       span.split {
         font-size: 14px;
@@ -89,6 +97,19 @@ export default {
           border-radius: 8px 0 0 8px;
         }
       }
+    }
+  }
+  .next {
+    background-color: $pink;
+    width: 25%;
+    float: right;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: $thinPink;
     }
   }
 }
