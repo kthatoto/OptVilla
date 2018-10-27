@@ -16,9 +16,10 @@
 
 <script>
 import Calendar from '@/components/molecules/Calendar'
+import sampleHouse from '@/sampleData/house'
 export default {
   components: { Calendar },
-  props: ['year', 'month', 'availableDates'],
+  props: ['year', 'month', 'a'],
   data () {
     return {
       current: {
@@ -34,7 +35,8 @@ export default {
         end: new Date(0),
         selecting: false
       },
-      flashing: false
+      flashing: false,
+      availableDates: []
     }
   },
   created () {
@@ -44,6 +46,7 @@ export default {
     const nextMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
     this.next.year = nextMonth.getFullYear()
     this.next.month = nextMonth.getMonth()
+    this.availableDates = this.a
   },
   methods: {
     selectDate (date) {

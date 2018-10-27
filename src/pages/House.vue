@@ -1,9 +1,9 @@
 <template lang="pug">
 .house
-  Keyvisual.keyvisual
+  Keyvisual.keyvisual(:house="house")
   .main
     .leftColumn
-      house-detail(:house="house" ref="hd")
+      house-detail(:house="house" :a="a" ref="hd")
     .rightColumn
       Reservation(:house="house" :selectedDate="selectedDate")
 </template>
@@ -13,6 +13,8 @@ import Keyvisual from '@/components/molecules/Keyvisual'
 import HouseDetail from '@/components/organisms/HouseDetail'
 import Reservation from '@/components/organisms/Reservation'
 import sampleHouse from '@/sampleData/house'
+
+import api from '@/utils/Api'
 export default {
   components: { Keyvisual, HouseDetail, Reservation },
   data () {
@@ -21,11 +23,19 @@ export default {
       selectedDate: {
         start: null,
         end: null
-      }
+      },
+      a: []
     }
   },
   created () {
-    this.house = sampleHouse
+    api('GET',
+      process.env.API_ENDPOINT + '/api/rooms/' + this.$route.params.id,
+      {}
+    ).then(response => {
+      const data = response.data
+      this.house = data
+    })
+    this.a = sampleHouse.available_date
   },
   methods: {
     flashCalendarDates () {

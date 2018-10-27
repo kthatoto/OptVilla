@@ -4,10 +4,10 @@
   p.houseDetail__number
     | 許可・登録番号
     span M130002147
-  p.houseDetail__explanation(v-text="house.body" style="white-space: pre;")
+  p.houseDetail__explanation(v-text="house.body")
   h3#calendars.-caleanderHeader 予約可能状況
   .houseDetail__calendar
-    available-date-calendar(:availableDates="house.available_date" ref="adc")
+    available-date-calendar(:a="a" ref="adc")
   h3 基本情報
   .houseDetail__basicInfo
     .row
@@ -38,11 +38,11 @@
       .data {{ house.pet }}
     .row
       .header お子様
-      .data(v-text="house.child" style="white-space: pre;")
+      .data(v-text="house.child")
   h3 フードオプション
   Customs.houseDetail__customs.customs(:customs="customs" :title="false")
   h3 アクセス
-  p.houseDetail__access(v-text="house.access" style="white-space: pre;")
+  p.houseDetail__access(v-text="house.access")
   gmap-map.houseDetail__map(:center="{lat: house.latitude, lng: house.longitude}" :zoom="13"
     style="width: 100%; height: 300px")
   h3.houseDetail__rate
@@ -76,29 +76,29 @@
       div
         Rate(:rate="house.reviews.access")
   .houseDetail__reviews
-    .review(v-for="review in house.room_reviews" :key="review.id")
+    .review(v-for="(review, index) in house.room_reviews" :key="review.id")
       .review__header
         h4
-          span.-name {{ review.reviewer }}さん
+          span.-name {{ names[index] }}さん
           span のレビュー
         .rate
           icon.icon(name="star")
           span.-figure {{ review.review }}
         .date 投稿日 {{ review.created_at }}
-      .body(v-text="review.body" style="white-space: pre;")
+      .body(v-text="review.body")
 </template>
 
 <script>
 import Customs from '@/components/organisms/Customs'
 import Rate from '@/components/molecules/Rate'
 import AvailableDateCalendar from '@/components/organisms/AvailableDateCalendar'
-import sampleCustoms from '@/sampleData/customs'
 export default {
   components: { Customs, Rate, AvailableDateCalendar },
-  props: ['house'],
+  props: ['house', 'a'],
   data () {
     return {
-      customs: []
+      customs: [],
+      names: ['一郎', '二郎', '三郎', '四郎', '五郎']
     }
   },
   computed: {

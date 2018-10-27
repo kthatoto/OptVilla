@@ -1,6 +1,6 @@
 <template lang="pug">
 router-link.houseCard(:to="{ name: 'House', params: { id: house.id } }")
-  .houseCard__thumbnail(:style="{height: house.height + 'px'}")
+  img.houseCard__thumbnail(:src="house.image_url")
   house-sub-card.houseCard__subCard(:house="house")
 </template>
 
@@ -18,6 +18,7 @@ export default {
   &__thumbnail {
     border-radius: 10px;
     background-color: gray;
+    width: 100%;
   }
   &__subCard {
     width: calc(100% - 30px);

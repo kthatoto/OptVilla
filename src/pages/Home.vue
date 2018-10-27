@@ -1,7 +1,7 @@
 <template lang="pug">
 .home
   router-link(:to="{ name: 'House', params: { id: topHouse.id } }")
-    Keyvisual.keyvisual
+    Keyvisual.keyvisual(:house="topHouse")
       house-sub-card.keyvisual__houseSubCard(:house="topHouse")
   .main
     Houses.houses(:houses="recommends" title="人気民泊リゾート")
@@ -14,8 +14,10 @@ import Keyvisual from '@/components/molecules/Keyvisual'
 import HouseSubCard from '@/components/molecules/HouseSubCard'
 import Houses from '@/components/organisms/Houses'
 import Customs from '@/components/organisms/Customs'
-import sampleHouse from '@/sampleData/house'
+// import sampleHouse from '@/sampleData/house'
 import sampleCustoms from '@/sampleData/customs'
+
+import api from '@/utils/Api'
 export default {
   components: { Keyvisual, HouseSubCard, Houses, Customs },
   data () {
@@ -26,13 +28,14 @@ export default {
     }
   },
   created () {
-    this.topHouse = sampleHouse
-    for (let i = 2; i <= 7; i++) {
-      const house = JSON.parse(JSON.stringify(this.topHouse))
-      house.id = i
-      house.height = i % 3 === 0 ? 300 : 200
-      this.recommends.push(house)
-    }
+    api('GET',
+      process.env.API_ENDPOINT + '/api/rooms?keyword=recommend',
+      {}
+    ).then(response => {
+      const data = response.data
+      this.topHouse = data[0]
+      this.recommends = data.slice(1, 15)
+    })
     this.customs = sampleCustoms
   }
 }
