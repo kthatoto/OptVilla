@@ -10,19 +10,12 @@
 import SearchBar from '@/components/molecules/SearchBar'
 import Customs from '@/components/organisms/Customs'
 import Houses from '@/components/organisms/Houses'
+import api from '@/utils/Api'
 export default {
   components: { SearchBar, Customs, Houses },
   data () {
     return {
-      topHouse: {
-        id: 1,
-        title: '湘南の海が一望できる別荘で素敵な休日を過ごしませんか？',
-        maxStayerNumber: 3,
-        pricePerStay: 35000,
-        prefecture: '神奈川',
-        city: '箱根',
-        rate: 3.4
-      },
+      topHouse: {},
       houses: [],
       customs: [
         { id: 1, name: 'レンタルシップ', slug: 'cruiging' },
@@ -33,12 +26,14 @@ export default {
     }
   },
   created () {
-    for (let i = 2; i <= 7; i++) {
-      const house = JSON.parse(JSON.stringify(this.topHouse))
-      house.id = i
-      house.height = i % 3 === 0 ? 300 : 200
-      this.houses.push(house)
-    }
+    api('GET',
+      process.env.API_ENDPOINT + '/api/rooms?keyword=recommend',
+      {}
+    ).then(response => {
+      const data = response.data
+      this.topHouse = data[0]
+      this.houses = data.slice(1, 15)
+    })
   }
 }
 </script>
